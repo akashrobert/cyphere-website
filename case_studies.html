@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Case Studies - Cyphere</title>
-    <meta name="description" content="Success stories and case studies from Cyphere's cybersecurity staffing and professional services engagements.">
+    <meta name="description" content="Success stories and case studies from Cyphere's cybersecurity projects and engagements.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* Copy all CSS from main site */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
+    <style>
+        /* -----------------------------
+           GLOBAL TOKENS
+        ------------------------------ */
         :root {
             --primary-navy: #0a1628;
             --secondary-blue: #1e40af;
@@ -25,39 +23,52 @@
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
             --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
             --gray-600: #4b5563;
             --gray-700: #374151;
+            --gray-800: #1f2937;
             --success-green: #10b981;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--gray-700);
-            background-color: var(--white);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--gray-700);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* -----------------------------
+           HEADER + NAVIGATION
+        ------------------------------ */
         .header {
             background: var(--white);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid var(--gray-200);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--gray-200);
         }
 
         .nav {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 2rem;
+            height: 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
         }
 
         .logo {
-            font-size: 2.25rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--secondary-blue);
             text-decoration: none;
@@ -66,61 +77,108 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
-        .nav-menu a {
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu > li > a {
             text-decoration: none;
             color: var(--gray-700);
             font-weight: 500;
-            transition: color 0.3s ease;
+            padding: 0.75rem 1rem;
+            display: block;
+            transition: color 0.2s;
         }
 
-        .nav-menu a:hover {
+        .nav-menu > li > a:hover {
             color: var(--secondary-blue);
         }
 
-        .btn-primary {
-            padding: 0.75rem 1.5rem;
-            background: var(--secondary-blue);
-            color: var(--white);
+        /* Dropdown */
+        .dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            min-width: 220px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            padding: 0.5rem 0;
+            z-index: 2000;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--gray-700);
+            white-space: nowrap;
+        }
+
+        .dropdown a:hover {
+            background: var(--gray-100);
+            color: var(--primary-navy);
+        }
+
+        .nav-menu li:hover .dropdown {
+            display: block;
+        }
+
+        /* CTA Buttons */
+        .btn-outline {
+            padding: 0.75rem 1.2rem;
+            border: 1px solid var(--secondary-blue);
+            color: var(--secondary-blue);
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-navy);
+        .btn-primary {
+            padding: 0.75rem 1.2rem;
+            background: var(--secondary-blue);
+            color: var(--white);
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
         }
 
-        /* Page Header */
+        /* -----------------------------
+           PAGE HEADER
+        ------------------------------ */
         .page-header {
-            background: var(--gray-50);
-            padding: 120px 2rem 80px;
             text-align: center;
+            padding: 100px 2rem 70px;
+            background: var(--gray-50);
         }
 
         .page-title {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 3rem;
+            font-weight: 900;
             color: var(--primary-navy);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .page-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--gray-600);
             max-width: 700px;
             margin: 0 auto;
         }
 
-        /* Case Studies */
+        /* -----------------------------
+           CASE STUDIES CONTAINER
+        ------------------------------ */
         .case-studies {
-            padding: 100px 2rem;
             max-width: 1280px;
             margin: 0 auto;
+            padding: 80px 2rem;
         }
 
         .case-study {
@@ -129,72 +187,74 @@
             border-radius: 16px;
             padding: 3rem;
             margin-bottom: 3rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
+        /* Header inside card */
         .case-study-header {
             display: grid;
             grid-template-columns: 1fr auto;
             gap: 2rem;
-            align-items: start;
             margin-bottom: 2rem;
-            padding-bottom: 2rem;
+            padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--gray-200);
         }
 
         .case-study-title {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary-navy);
-            margin-bottom: 0.5rem;
         }
 
         .case-study-subtitle {
             color: var(--gray-600);
-            font-size: 1.1rem;
+            margin-top: 0.3rem;
         }
 
+        /* Stats */
         .case-study-stats {
             display: flex;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .case-stat {
             text-align: center;
-            min-width: 100px;
         }
 
         .case-stat-number {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--secondary-blue);
-            display: block;
         }
 
         .case-stat-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--gray-600);
-            font-weight: 500;
         }
 
+        /* -----------------------------
+           THE MOST IMPORTANT PART:
+           CASE STUDY CONTENT GRID
+        ------------------------------ */
         .case-study-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
             gap: 3rem;
             margin-bottom: 2rem;
+            align-items: start;
         }
 
-        .challenge, .solution, .results {
-            margin-bottom: 2rem;
+        .case-study-content > div {
+            align-self: start;
         }
 
         .section-label {
             font-size: 0.9rem;
             font-weight: 700;
-            text-transform: uppercase;
             color: var(--secondary-blue);
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
         }
 
         .section-content {
@@ -208,60 +268,63 @@
         }
 
         .results-list li {
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
         }
 
         .results-list li::before {
             content: "✓";
             color: var(--success-green);
             font-weight: 700;
-            font-size: 1.1rem;
         }
 
+        /* Testimonials */
         .testimonial-box {
+            margin-top: 2rem;
             background: var(--gray-50);
-            padding: 2rem;
+            padding: 1.8rem;
             border-radius: 12px;
             border-left: 4px solid var(--secondary-blue);
-            margin-top: 2rem;
         }
 
         .testimonial-quote {
-            font-size: 1.1rem;
             font-style: italic;
+            margin-bottom: 0.8rem;
             color: var(--gray-700);
-            margin-bottom: 1rem;
-            line-height: 1.6;
         }
 
         .testimonial-author {
-            font-weight: 600;
-            color: var(--gray-800);
+            font-weight: 700;
+            color: var(--primary-navy);
         }
 
-        .testimonial-title {
-            color: var(--gray-600);
-            font-size: 0.9rem;
+        /* Footer */
+        .footer {
+            padding: 60px 2rem;
+            background: var(--primary-navy);
+            color: var(--gray-300);
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
         }
 
         @media (max-width: 768px) {
+            .case-study-content {
+                grid-template-columns: 1fr !important;
+            }
             .case-study-header {
                 grid-template-columns: 1fr;
             }
-            
-            .case-study-content {
+            .footer-content {
                 grid-template-columns: 1fr;
-            }
-            
-            .case-study-stats {
-                justify-content: center;
-            }
-            
-            .page-title {
-                font-size: 2.5rem;
+                text-align: center;
             }
         }
     </style>
@@ -270,32 +333,69 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <a href="index.html" class="logo">Cyphere</a>
+            <a href="/index.html" class="logo">Cyphere</a>
+
             <ul class="nav-menu">
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="case-studies.html">Case Studies</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li>
+                    <a href="/index.html#services">Services</a>
+                    <div class="dropdown">
+                        <a href="/index.html#executive-search">Executive Search</a>
+                        <a href="/index.html#technical-staffing">Technical Staffing</a>
+                        <a href="/index.html#managed-services">Managed Services</a>
+                        <a href="/index.html#consulting">Security Consulting</a>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/index.html#solutions">Solutions</a>
+                    <div class="dropdown">
+                        <a href="/index.html#compliance">Compliance & Audit</a>
+                        <a href="/index.html#risk-assessment">Risk Assessment</a>
+                        <a href="/index.html#incident-response">Incident Response</a>
+                        <a href="/index.html#training">Security Training</a>
+                    </div>
+                </li>
+
+                <li><a href="/case_studies.html">Case Studies</a></li>
+
+                <li>
+                    <a href="/index.html#about">About Us</a>
+                    <div class="dropdown">
+                        <a href="/index.html#about">Company Overview</a>
+                        <a href="/index.html#team">Meet Our Team</a>
+                        <a href="/index.html#careers">Careers</a>
+                    </div>
+                </li>
+
+                <li><a href="/index.html#contact">Contact</a></li>
             </ul>
-            <a href="index.html#contact" class="btn-primary">Get Started</a>
+
+            <div class="cta-header">
+                <a href="tel:+1234567890" class="btn-outline">Call Us</a>
+                <a href="/index.html#contact" class="btn-primary">Get Started</a>
+            </div>
         </nav>
     </header>
 
     <!-- Page Header -->
     <section class="page-header">
         <h1 class="page-title">Success Stories</h1>
-        <p class="page-subtitle">Discover how Cyphere has transformed cybersecurity programs for leading organizations across industries through strategic staffing and professional services.</p>
+        <p class="page-subtitle">
+            Discover how Cyphere has transformed cybersecurity programs for leading organisations through strategic staffing, IAM support, and Active Directory services.
+        </p>
     </section>
 
-    <!-- Case Studies -->
+    <!-- Case Studies Section -->
     <section class="case-studies">
         <!-- Case Study 1 -->
         <div class="case-study">
+
             <div class="case-study-header">
                 <div>
                     <h2 class="case-study-title">Fortune 100 Financial Services</h2>
                     <p class="case-study-subtitle">Complete CISO Search & Security Team Build-Out</p>
                 </div>
+
                 <div class="case-study-stats">
                     <div class="case-stat">
                         <span class="case-stat-number">12</span>
@@ -313,18 +413,19 @@
             </div>
 
             <div class="case-study-content">
+
                 <div>
                     <div class="challenge">
                         <div class="section-label">Challenge</div>
                         <div class="section-content">
-                            A major financial services company needed to rapidly scale their cybersecurity program following a regulatory audit that identified significant gaps. They required a new CISO and a complete security operations team within 60 days to meet compliance deadlines.
+                            A major financial services company needed to rapidly scale their cybersecurity program following a regulatory audit. They required a new CISO and a complete security operations team within 60 days.
                         </div>
                     </div>
 
                     <div class="solution">
                         <div class="section-label">Solution</div>
                         <div class="section-content">
-                            Cyphere deployed a comprehensive recruitment strategy, leveraging our network of pre-vetted cybersecurity executives. We conducted rapid interviews, cultural fit assessments, and technical evaluations to identify the perfect CISO candidate, followed by building out the entire security team.
+                            Cyphere deployed a comprehensive recruitment strategy, leveraging a network of pre-vetted cybersecurity executives and senior technical talent to build a full security team rapidly.
                         </div>
                     </div>
                 </div>
@@ -332,36 +433,35 @@
                 <div>
                     <div class="results">
                         <div class="section-label">Results</div>
-                        <div class="section-content">
-                            <ul class="results-list">
-                                <li>CISO placed in 12 days (industry average: 6+ months)</li>
-                                <li>Complete 15-person security team deployed in 45 days</li>
-                                <li>94% reduction in security incidents within 6 months</li>
-                                <li>Successful regulatory compliance audit completion</li>
-                                <li>$2.8M in avoided breach costs in first year</li>
-                                <li>SOC 2 Type II certification achieved</li>
-                            </ul>
-                        </div>
+                        <ul class="results-list">
+                            <li>CISO placed in 12 days</li>
+                            <li>15-person cyber team deployed in 45 days</li>
+                            <li>94% reduction in security incidents</li>
+                            <li>Successful compliance audit closure</li>
+                            <li>$2.8M breach-cost avoidance</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
             <div class="testimonial-box">
                 <div class="testimonial-quote">
-                    "Cyphere delivered beyond our expectations. Not only did they place our CISO in record time, but the entire security team they assembled has transformed our risk posture. We went from failing audits to achieving SOC 2 certification in under a year."
+                    “Cyphere delivered beyond expectations. From placing our CISO to building the complete cyber team, the impact was immediate.”
                 </div>
-                <div class="testimonial-author">Sarah Chen</div>
-                <div class="testimonial-title">Chief Technology Officer</div>
+                <div class="testimonial-author">Chief Technology Officer</div>
             </div>
         </div>
 
+
         <!-- Case Study 2 -->
         <div class="case-study">
+
             <div class="case-study-header">
                 <div>
                     <h2 class="case-study-title">Healthcare Technology Leader</h2>
                     <p class="case-study-subtitle">24/7 Managed SOC Implementation</p>
                 </div>
+
                 <div class="case-study-stats">
                     <div class="case-stat">
                         <span class="case-stat-number">30</span>
@@ -379,18 +479,19 @@
             </div>
 
             <div class="case-study-content">
+
                 <div>
                     <div class="challenge">
                         <div class="section-label">Challenge</div>
                         <div class="section-content">
-                            A rapidly growing healthcare technology company needed 24/7 security monitoring to protect patient data and meet HIPAA requirements. Their internal team lacked the expertise and resources to build a comprehensive SOC.
+                            A fast-growing healthcare technology company needed continuous monitoring for HIPAA compliance and patient data protection.
                         </div>
                     </div>
 
                     <div class="solution">
                         <div class="section-label">Solution</div>
                         <div class="section-content">
-                            Cyphere deployed our managed SOC service with a dedicated team of certified security analysts, threat hunters, and incident responders. We implemented advanced SIEM technology and custom playbooks tailored for healthcare environments.
+                            Cyphere delivered a fully managed SOC with SIEM tuning, threat hunting, incident response playbooks, and compliance-aligned monitoring.
                         </div>
                     </div>
                 </div>
@@ -398,50 +499,41 @@
                 <div>
                     <div class="results">
                         <div class="section-label">Results</div>
-                        <div class="section-content">
-                            <ul class="results-list">
-                                <li>Full SOC operational in 30 days</li>
-                                <li>99.9% monitoring uptime achieved</li>
-                                <li>87% improvement in threat detection rates</li>
-                                <li>Zero security incidents in 18 months</li>
-                                <li>HIPAA compliance maintained continuously</li>
-                                <li>40% reduction in security operational costs</li>
-                            </ul>
-                        </div>
+                        <ul class="results-list">
+                            <li>Full SOC live in 30 days</li>
+                            <li>99.9% uptime maintained</li>
+                            <li>87% improvement in detection</li>
+                            <li>Zero incidents in first 18 months</li>
+                            <li>HIPAA compliance achieved</li>
+                        </ul>
                     </div>
                 </div>
+
             </div>
 
             <div class="testimonial-box">
                 <div class="testimonial-quote">
-                    "The managed SOC service from Cyphere has been transformational. We now have enterprise-grade security monitoring at a fraction of the cost of building it internally. Their team feels like an extension of our organization."
+                    “The SOC team from Cyphere feels like an extension of our own organisation. Outstanding service.”
                 </div>
-                <div class="testimonial-author">Michael Rodriguez</div>
-                <div class="testimonial-title">CISO, HealthTech Innovations</div>
+                <div class="testimonial-author">CISO, HealthTech Innovations</div>
             </div>
         </div>
 
-        <!-- Template for New Case Study -->
-        <!-- Copy this section and update with your new case study -->
+
+        <!-- Case Study 3 -->
         <div class="case-study">
+
             <div class="case-study-header">
                 <div>
-                    <h2 class="case-study-title">YOUR CLIENT NAME HERE</h2>
-                    <p class="case-study-subtitle">Brief description of engagement</p>
+                    <h2 class="case-study-title">Major Auto Manufacturer</h2>
+                    <p class="case-study-subtitle">Active Directory Cleanup & L2 Support</p>
                 </div>
+
                 <div class="case-study-stats">
-                    <div class="case-stat">
-                        <span class="case-stat-number">XX</span>
-                        <span class="case-stat-label">Your Metric</span>
-                    </div>
-                    <div class="case-stat">
-                        <span class="case-stat-number">XX%</span>
-                        <span class="case-stat-label">Your Result</span>
-                    </div>
-                    <div class="case-stat">
-                        <span class="case-stat-number">XX</span>
-                        <span class="case-stat-label">Your Achievement</span>
-                    </div>
+                    <div class="case-stat"><span class="case-stat-number">2+</span><span class="case-stat-label">Years Support</span></div>
+                    <div class="case-stat"><span class="case-stat-number">95%</span><span class="case-stat-label">Orphan Accounts Removed</span></div>
+                    <div class="case-stat"><span class="case-stat-number">100%</span><span class="case-stat-label">Groups Restored</span></div>
+                    <div class="case-stat"><span class="case-stat-number">40%</span><span class="case-stat-label">Faster Provisioning</span></div>
                 </div>
             </div>
 
@@ -450,42 +542,194 @@
                     <div class="challenge">
                         <div class="section-label">Challenge</div>
                         <div class="section-content">
-                            Describe the client's challenge here...
+                            Multiple AD environments with orphaned accounts, unmanaged groups, and lack of ownership needed cleanup and restructuring.
                         </div>
                     </div>
 
                     <div class="solution">
                         <div class="section-label">Solution</div>
                         <div class="section-content">
-                            Describe how Cyphere solved the problem...
+                            Cyphere performed full AD gap analysis, cleanup, group restructuring, PowerShell automation, and ongoing L2 operational support.
                         </div>
                     </div>
                 </div>
 
                 <div>
                     <div class="results">
-                        <div class="section-label">Results</div>
-                        <div class="section-content">
-                            <ul class="results-list">
-                                <li>Result 1</li>
-                                <li>Result 2</li>
-                                <li>Result 3</li>
-                                <li>Result 4</li>
-                                <li>Result 5</li>
-                            </ul>
-                        </div>
+                        <div class="section-label">Deliverables</div>
+                        <ul class="results-list">
+                            <li>AD Design & Gap Assessment</li>
+                            <li>Orphan Account Cleanup</li>
+                            <li>Group Nesting & Ownership Fix</li>
+                            <li>PowerShell Reporting Automation</li>
+                            <li>Service Account Hardening</li>
+                            <li>User Home Path Automation</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
             <div class="testimonial-box">
                 <div class="testimonial-quote">
-                    "Your client testimonial quote goes here..."
+                    “Cyphere transformed our AD stability and audit readiness. Exceptional technical depth.”
                 </div>
-                <div class="testimonial-author">Client Name</div>
-                <div class="testimonial-title">Client Title, Company Name</div>
+                <div class="testimonial-author">IT Director, Global Auto Manufacturer</div>
             </div>
         </div>
+
+
+        <!-- Case Study 4 -->
+        <div class="case-study">
+
+            <div class="case-study-header">
+                <div>
+                    <h2 class="case-study-title">Global Enterprise Client</h2>
+                    <p class="case-study-subtitle">Identity & Access Management L2 Support</p>
+                </div>
+
+                <div class="case-study-stats">
+                    <div class="case-stat"><span class="case-stat-number">3+</span><span class="case-stat-label">Years Support</span></div>
+                    <div class="case-stat"><span class="case-stat-number">99.8%</span><span class="case-stat-label">SLA Compliance</span></div>
+                    <div class="case-stat"><span class="case-stat-number">60%</span><span class="case-stat-label">Process Automation</span></div>
+                    <div class="case-stat"><span class="case-stat-number">1M+</span><span class="case-stat-label">Identity Events/Year</span></div>
+                </div>
+            </div>
+
+            <div class="case-study-content">
+
+                <div>
+                    <div class="challenge">
+                        <div class="section-label">Challenge</div>
+                        <div class="section-content">
+                            Needed consistent L2 support for IDM operations, driver monitoring, recertification campaigns, LDAP reporting, and SSO across platforms.
+                        </div>
+                    </div>
+
+                    <div class="solution">
+                        <div class="section-label">Solution</div>
+                        <div class="section-content">
+                            Cyphere provided L2 IDM operations, automation for driver health, notifications, audit evidence closure, and SSO using SAML/OAuth.
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="results">
+                        <div class="section-label">Deliverables</div>
+                        <ul class="results-list">
+                            <li>Incidents, SRs & CR Support</li>
+                            <li>Driver & Disk Automation</li>
+                            <li>Password Expiry Notifications</li>
+                            <li>Recertification Campaigns</li>
+                            <li>Custom LDAP Reporting</li>
+                            <li>SSO (Entra ID, NetIQ)</li>
+                            <li>PAM for IDM & AD</li>
+                            <li>Full Audit Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-box">
+                <div class="testimonial-quote">
+                    “Cyphere’s IAM support consistently exceeds our SLA expectations. Reliable and technically strong team.”
+                </div>
+                <div class="testimonial-author">Identity Services Manager</div>
+            </div>
+        </div>
+
+
+        <!-- Case Study 5 -->
+        <div class="case-study">
+
+            <div class="case-study-header">
+                <div>
+                    <h2 class="case-study-title">IAM Consulting Engagement</h2>
+                    <p class="case-study-subtitle">IAM Assessment & Zero Trust Advisory</p>
+                </div>
+
+                <div class="case-study-stats">
+                    <div class="case-stat"><span class="case-stat-number">1–3</span><span class="case-stat-label">Month Cycle</span></div>
+                    <div class="case-stat"><span class="case-stat-number">30%</span><span class="case-stat-label">Risk Reduction</span></div>
+                    <div class="case-stat"><span class="case-stat-number">100%</span><span class="case-stat-label">Zero Trust Readiness</span></div>
+                    <div class="case-stat"><span class="case-stat-number">5-Year</span><span class="case-stat-label">IAM Roadmap</span></div>
+                </div>
+            </div>
+
+            <div class="case-study-content">
+
+                <div>
+                    <div class="challenge">
+                        <div class="section-label">Challenge</div>
+                        <div class="section-content">
+                            Organisations required an independent IAM review, gap assessment, Zero Trust alignment and guidance for future IAM programs.
+                        </div>
+                    </div>
+
+                    <div class="solution">
+                        <div class="section-label">Solution</div>
+                        <div class="section-content">
+                            Cyphere performed IAM assessment, maturity scoring, gap analysis, Zero Trust advisory, and delivered a full IAM transformation roadmap.
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="results">
+                        <div class="section-label">Deliverables</div>
+                        <ul class="results-list">
+                            <li>IAM Landscape Review</li>
+                            <li>Security Gap Assessment</li>
+                            <li>Zero Trust Advisory</li>
+                            <li>Compliance Readiness</li>
+                            <li>IAM Health Check Report</li>
+                            <li>Migration & Greenfield Estimates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-box">
+                <div class="testimonial-quote">
+                    “Cyphere helped us define a clear IAM roadmap and modernise our identity security posture.”
+                </div>
+                <div class="testimonial-author">CISO, Financial Services Organisation</div>
+            </div>
+        </div>
+
+
     </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3 style="color: white; margin-bottom: 1rem;">Cyphere</h3>
+                <p>Cybersecurity professional service, IAM expertise, and Active Directory engineering for global enterprises.</p>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <p><a href="/index.html#about" style="color: var(--gray-300); text-decoration:none;">About Us</a></p>
+                <p><a href="/index.html#team" style="color: var(--gray-300); text-decoration:none;">Our Team</a></p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <p>Staffing</p>
+                <p>IAM Support</p>
+                <p>AD Engineering</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>info@cyphere.co</p>
+                <p>+91-00000-00000</p>
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-top:2rem; color:var(--gray-400);">
+            © 2025 Cyphere. All rights reserved.
+        </div>
+    </footer>
+
 </body>
 </html>
